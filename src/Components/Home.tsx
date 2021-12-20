@@ -8,9 +8,8 @@ interface homeProps {
   isLoaded: boolean
 }
 const Home: FC<homeProps> = ({beerItems, isLoaded}) =>  {    
+console.log(beerItems)
 
-
-  console.log('fromHOME' , beerItems, isLoaded)
   return (
         <div className='articles'>
              {beerItems.length !== 0

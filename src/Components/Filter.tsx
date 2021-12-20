@@ -1,14 +1,13 @@
 import React, { FC } from 'react'
 interface filterProps {
-    getArticles: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    searchArticles: (e: React.MouseEvent<HTMLButtonElement>) => void
+    searchArticles: (e: React.ChangeEvent<HTMLInputElement>) => void,
 }
-const Filter: FC<filterProps> = ({getArticles, searchArticles}) => {
+const Filter: FC<filterProps> = ({searchArticles}) => {
+
     return (
         <div>
           <form>
-            <input onChange={getArticles} type='text'></input>
-            <button onClick={searchArticles} >Search</button>    
+            <input id='search' onChange={searchArticles} type='text'></input>
           </form>  
         </div>
     )
