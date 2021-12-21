@@ -1,11 +1,27 @@
-import React from 'react'
+import React, {FC} from 'react'
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { BeerItem } from '../App';
 
-function fullArticle() {
+
+const FullArticle: FC = ({}) =>  {   
+
+   let beerItem: BeerItem = {
+       name: '',
+       id: '',
+       image_url: '',
+       tagline: '',
+       description: ''
+   }
     return (
-        <div>
-            
+        <div  className='full-beer-item'>
+            <img className='beer-image' src={beerItem.image_url} alt='beer'></img>
+            <h3>{beerItem.name}</h3>
+            <div className='tagLine'>{beerItem.tagline}</div>
+            <div id='id' className='description'>{beerItem.description}</div>
+            <Link to="/home">Return</Link>
         </div>
     )
 }
 
-export default fullArticle
+export default FullArticle
