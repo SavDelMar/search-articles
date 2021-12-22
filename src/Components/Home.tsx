@@ -11,7 +11,7 @@ type homeProps = {
   beerItems: Array<BeerItem>,
   isLoaded: boolean,
 }
-const Home: FC<homeProps> = () =>  {  
+const Home: FC<homeProps> = ({ }) =>  {  
   const dispatch = useDispatch();
   const beers: Array<BeerItem> = useSelector((state: AppState) => state.beers.items);
   const keyWord: string = useSelector((state: AppState) => state.keyword.keyword);
@@ -48,7 +48,7 @@ const Home: FC<homeProps> = () =>  {
                 imageURL={item.image_url}
                 description={item.description}
                 key={i+item.name}
-                keyWord={regexp}
+                keyWord={keyWord}
                 showFullArticle={showFullArticle}
               />
             ))

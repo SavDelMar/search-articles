@@ -43,7 +43,7 @@ type TypeBeerAction = {
     }
   };
   const initialStateKeyword = {
-    keyword: ''
+    keyword: ' '
   }
   export const keyWordReducer = (state = initialStateKeyword, action: TypeKeyAction) => {
     switch (action.type) {

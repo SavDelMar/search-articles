@@ -31,7 +31,7 @@ function App() {
       console.log(beers)
       // setBeers(data)
     }
-
+     debugger
     fetchBeers()
   }, [])
 
@@ -39,10 +39,8 @@ function App() {
 
   return (
     <div className="App">
-      
-
       <Routes>
-          <Route path="/home"  element={<Home isLoaded={loading} beerItems={beers}/>}/>
+          <Route path="/"  element={<Home isLoaded={loading} beerItems={beers}/>}/>
           <Route path="/details/:id"  element={<FullArticle  />} />   
       </Routes>
     </div>
