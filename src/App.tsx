@@ -9,10 +9,13 @@ import { AppState } from './redux/rootReducer';
 
 export type BeerItem = {
   name: string,
-  id: string,
+  id: number,
   tagline: string,
   image_url: string,
-  description:  string
+  description: string,
+  abv: string,
+  ibu: string,
+  brewers_tips: string
 }
 export type KeyWord = {
   keyword: string
@@ -21,18 +24,15 @@ function App() {
   const [loading, setLoading] = useState(true);
   let dispatch = useDispatch()
   const beers: Array<BeerItem> = useSelector((state: AppState) => state.beers.items);
-  console.log(beers)
   useEffect(() => {
     const fetchBeers = async () => {
       const callAPI = await fetch(`https://api.punkapi.com/v2/beers`)
       const data = await callAPI.json();
       setLoading(false);
       dispatch(setBeersAction(data));
-      console.log(beers)
-      // setBeers(data)
     }
-     debugger
     fetchBeers()
+    console.log(beers)
   }, [])
 
   
@@ -41,7 +41,7 @@ function App() {
     <div className="App">
       <Routes>
           <Route path="/"  element={<Home isLoaded={loading} beerItems={beers}/>}/>
-          <Route path="/details/:id"  element={<FullArticle  />} />   
+        <Route path="/details/:id" element={<FullArticle beers={beers}/>} />   
       </Routes>
     </div>
   );

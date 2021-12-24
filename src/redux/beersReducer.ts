@@ -1,10 +1,13 @@
 import { BeerItem } from "../App";
 const initialStateFull: BeerItem =  {
   name: '',
-  id: '',
+  id: 0,
   tagline: '',
   image_url: '',
-  description:  ''
+  description: '',
+  abv: '',
+  ibu: '',
+  brewers_tips: ''
 }
 const initialState = {
     items: [],
@@ -43,7 +46,7 @@ type TypeBeerAction = {
     }
   };
   const initialStateKeyword = {
-    keyword: ' '
+    keyword: ''
   }
   export const keyWordReducer = (state = initialStateKeyword, action: TypeKeyAction) => {
     switch (action.type) {

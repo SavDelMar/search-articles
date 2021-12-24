@@ -41,11 +41,35 @@ input {
 h3 {
   color: rgb(102, 65, 10);
   font-weight: bold;
+  margin-bottom: 10px;
+}
+.beer-image-container {
+  padding: 0;
+  height: 60%;
+  width: 30%;
+  margin: 0 auto;
 }
 .beer-image {
-  height: auto;
-  width: 10%;
+  height: 100%;
+  max-width: 100%;
 }
+.tagline {
+  color: rgb(134, 102, 19);
+  font-style: italic;
+  margin-bottom: 5px;
+}
+.more-info {
+  padding: 2px;
+  margin-top: 10px;
+  text-decoration: none;
+  color: rgb(228, 213, 163);
+  font-weight: bold;
+  font-size: 12px;
+  background-color: rgb(19, 20, 43);
+  border-radius: 5px;
+  float: left;
+}
+
 .full-beer-item {
   width: 500px;
   height: 300px;
