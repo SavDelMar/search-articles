@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ChangeEventHandler, useEffect, useState, FunctionComponent } from 'react';
+import React, {  useEffect, useState} from 'react';
 import './App.css';
 import Home from './Components/Home';
 import { setBeersAction } from './redux/beersAction';
@@ -22,7 +22,7 @@ export type KeyWord = {
 }
 function App() {
   const [loading, setLoading] = useState(true);
-  let dispatch = useDispatch()
+  let dispatch = useDispatch();
   const beers: Array<BeerItem> = useSelector((state: AppState) => state.beers.items);
   useEffect(() => {
     const fetchBeers = async () => {
@@ -31,11 +31,8 @@ function App() {
       setLoading(false);
       dispatch(setBeersAction(data));
     }
-    fetchBeers()
-    console.log(beers)
-  }, [])
-
-  
+    fetchBeers();
+  }, []);
 
   return (
     <div className="App">
@@ -46,6 +43,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

@@ -13,33 +13,17 @@ type homeProps = {
   beerItems: Array<BeerItem>,
   isLoaded: boolean,
 }
-const Home: FC<homeProps> = ({ }) => {
+
+const Home: FC<homeProps> = () => {
   const dispatch = useDispatch();
   const beers: Array<BeerItem> = useSelector((state: AppState) => state.beers.items);
   const keyWord: string = useSelector((state: AppState) => state.keyword.keyword);
-  const [filteredBeers, setBeers] = useState(beers)
-  const regexp = useMemo(() => new RegExp(keyWord, 'ig'), [keyWord])
-      document.getElementById('body')!.style.backgroundColor = 'rgb(255, 255, 255)'
+  const [filteredBeers, setBeers] = useState(beers);
+  const [searchResults, setSearchResults] = useState(25);
+  const regexp = useMemo(() => new RegExp(keyWord, 'ig'), [keyWord]);
+  document.getElementById('body')!.style.backgroundColor = 'rgb(255, 255, 255)';
 
-  // function searchAndSort(array: Array<BeerItem>, searchWord: RegExp) { 
-  //   type newArray = {
-
-  //   }
-  //   let newArray = [...array];
-  //   for (let i = 0; i < array.length; i++) {
-  //     let nameMatch = array[i].name.match(searchWord).length;
-  //     let descriptionMatch = array[i].description.match(searchWord).length;
-  //     if (nameMatch > 0) { 
-  //       newArray[i].nameMatch = nameMatch;
-  //     }
-  //     if (descriptionMatch > 0) { 
-  //       newArray[i].descriptionMatch = descriptionMatch;
-  //     }
-  //   }
-  //   return newArray
-  // }
   useEffect(() => {
-    debugger
     const filtered = beers
       .filter((beer: BeerItem) => {
         let nameMatch = beer.name.search(regexp);
@@ -47,14 +31,13 @@ const Home: FC<homeProps> = ({ }) => {
         return (nameMatch !== -1) || (descriptionMatch !== -1)
       })
       .sort(function (a, b) {
-        console.log(a, a.name.matchAll(regexp)!, Array.from(a.name.matchAll(regexp)!).length)
-        debugger
+        // двухуровневая сортировка: по общему количеству вхождений в название и описание, по приоритетности названия перед описанием
         return (Array.from(b.name.matchAll(regexp)!).length + Array.from(b.description.matchAll(regexp)!).length)
           - (Array.from(a.name.matchAll(regexp)!).length + Array.from(a.description.matchAll(regexp)!).length)
           || (Array.from(b.name.matchAll(regexp)!).length - Array.from(a.name.matchAll(regexp)!).length)
       });
-    
-    setBeers(filtered)
+    setSearchResults(filtered.length);
+    setBeers(filtered);
   }, [beers, keyWord, regexp])
 
   const showFullArticle = useCallback((obj) => {
@@ -65,11 +48,15 @@ const Home: FC<homeProps> = ({ }) => {
   return (
     <div>
       <header className="App-header">
-        <div id="test">SEARCH</div>
+        <div className="search-name">Find YOUR beer</div>
         <Search />
       </header>
       <div className='articles'>
         <Container sx={{ py: 8 }} maxWidth="md">
+          { searchResults !== 25 
+            ? <div className='search-results'>Results: {searchResults}</div>
+            : <div className='slogan'>If You  will not go for the beer, then the beer comes after you</div>
+           }  
           {/* End hero unit */}
           <Grid container spacing={4}>
             {beers.length !== 0
@@ -89,11 +76,8 @@ const Home: FC<homeProps> = ({ }) => {
           }
           </Grid>
         </Container>
-        
        </div> 
     </div>
-   
-        
     )
 }
 

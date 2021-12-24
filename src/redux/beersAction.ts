@@ -17,16 +17,8 @@ export const showFullArticleAction = (item: BeerItem) => ({
     })
 
 export const fetchBeers = async () => {
-    debugger
     axios
         .get(`https://api.punkapi.com/v2/beers`)
         .then(({data}) => {
-            console.log(data)
-            // dispatch(setBeersAction(data))
         })
-
-    
-    // const callAPI = await fetch(`https://api.punkapi.com/v2/beers`)
-    // const data = await callAPI.json();
-    // dispatch(setBeersAction(data))
 }

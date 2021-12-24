@@ -37,7 +37,6 @@ type TypeBeerAction = {
     switch (action.type) {
       case 'SHOW_FULL_ARTICLE':
         let newState = action.payload;
-        console.log('reducer' , action.payload)
         return { ...newState };
   
      
@@ -53,7 +52,6 @@ type TypeBeerAction = {
       case 'SET_KEYWORD':
         let newState = {...state};
         newState.keyword = action.payload;
-        console.log('reducer ket' , action.payload)
         return { ...newState };
   
      
