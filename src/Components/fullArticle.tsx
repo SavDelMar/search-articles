@@ -15,7 +15,9 @@ const FullArticle: FC<fullArticleProps> = ({ beers }) => {
     let id: number = parseInt(parameters.pathname.substring(9)) - 1
     const item: BeerItem = useSelector((state: AppState) => state.beers.items[id]);
     console.log(item)
-   
+    debugger
+    document.getElementById('body')!.style.backgroundColor = '#282c34'
+       
    
 
 
@@ -32,9 +34,8 @@ const FullArticle: FC<fullArticleProps> = ({ beers }) => {
                       pt: '5%',
                     }}
                     style={{padding: '0',
-                            height: '60%',
-                            width: '30%',
-                            margin: '0 auto',
+                            width: '12%',
+                            margin: '5px auto',
                           }}
                     image={item.image_url}
                     alt="random"
@@ -57,7 +58,7 @@ const FullArticle: FC<fullArticleProps> = ({ beers }) => {
                   </CardContent>
                   <CardActions>
                     <Link to="/">
-                        <Button style={{backgroundColor: 'rgb(19, 20, 43)'}} variant="contained">Return</Button>
+                        <Button style={{backgroundColor: '#282c34'}} variant="contained">Return</Button>
                     </Link>
                   </CardActions>
                 </Card>

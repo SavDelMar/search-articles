@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-          <Route path="/"  element={<Home isLoaded={loading} beerItems={beers}/>}/>
+        <Route path="/"  element={<Home isLoaded={loading} beerItems={beers}/>}/>
         <Route path="/details/:id" element={<FullArticle beers={beers}/>} />   
       </Routes>
     </div>

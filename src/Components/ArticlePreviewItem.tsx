@@ -53,7 +53,7 @@ interface articlePreviewProps {
                             margin: '5px auto',
                           }}
                     image={imageURL}
-                    alt="random"
+                    alt="beer"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -68,7 +68,7 @@ interface articlePreviewProps {
                   </CardContent>
                   <CardActions>
                     <Link className='more-info' to={`/details/${id}`}>
-                      <Button style={{backgroundColor: 'rgb(19, 20, 43)'}} variant="contained">View more...</Button>
+                      <Button style={{backgroundColor: '#282c34'}} variant="contained">View more...</Button>
                     </Link>
                   </CardActions>
                 </Card>

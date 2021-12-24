@@ -18,7 +18,9 @@ const Home: FC<homeProps> = ({ }) => {
   const beers: Array<BeerItem> = useSelector((state: AppState) => state.beers.items);
   const keyWord: string = useSelector((state: AppState) => state.keyword.keyword);
   const [filteredBeers, setBeers] = useState(beers)
-  const regexp = useMemo(() => new RegExp(keyWord, 'i'), [keyWord])
+  const regexp = useMemo(() => new RegExp(keyWord, 'ig'), [keyWord])
+      document.getElementById('body')!.style.backgroundColor = 'rgb(255, 255, 255)'
+
   // function searchAndSort(array: Array<BeerItem>, searchWord: RegExp) { 
   //   type newArray = {
 
@@ -39,10 +41,19 @@ const Home: FC<homeProps> = ({ }) => {
   useEffect(() => {
     debugger
     const filtered = beers
-      .filter((beer:BeerItem) =>
-        (beer.name.search(regexp) !== -1) || (beer.description.search(regexp) !== -1))
-    // ).map((beer: BeerItem) => 
-    //     ())
+      .filter((beer: BeerItem) => {
+        let nameMatch = beer.name.search(regexp);
+        let descriptionMatch = beer.description.search(regexp);
+        return (nameMatch !== -1) || (descriptionMatch !== -1)
+      })
+      .sort(function (a, b) {
+        console.log(a, a.name.matchAll(regexp)!, Array.from(a.name.matchAll(regexp)!).length)
+        debugger
+        return (Array.from(b.name.matchAll(regexp)!).length + Array.from(b.description.matchAll(regexp)!).length)
+          - (Array.from(a.name.matchAll(regexp)!).length + Array.from(a.description.matchAll(regexp)!).length)
+          || (Array.from(b.name.matchAll(regexp)!).length - Array.from(a.name.matchAll(regexp)!).length)
+      });
+    
     setBeers(filtered)
   }, [beers, keyWord, regexp])
 

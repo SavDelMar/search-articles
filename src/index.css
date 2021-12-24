@@ -15,6 +15,7 @@ code {
   justify-content: space-around;
   align-content: space-around;
 }
+
 .search {
   width: 30%;
 }
@@ -71,10 +72,10 @@ h3 {
 }
 
 .full-beer-item {
-  width: 500px;
-  height: 300px;
+  width: 50%;
+  height: 100%;
   margin: 40px auto;
-  background-color: rgb(184, 160, 82);
+  background-color: rgb(255, 255, 255);
   padding: 10px;
   text-align: left;
 }

@@ -13,12 +13,6 @@ const Search: FC = () => {
       dispatch(setKeywordAction(e.target.value));
       console.log(e.target.value)
   }
-
-    
-    
-    
-    
-
       
     return (
         <div className='search'>
